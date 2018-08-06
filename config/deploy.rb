@@ -3,6 +3,7 @@ lock '~> 3.11.0'
 
 set :application, 'ansible_testing'
 set :repo_url, 'git@github.com:caioeps/ansible_testing.git'
+set :user, 'deploy'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

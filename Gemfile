@@ -31,6 +31,7 @@ group :development, :test do
   gem 'capistrano', '~> 3.10'
   gem 'capistrano-chruby'
   gem 'capistrano-rails'
+  gem 'capistrano3-puma'
 end
 
 group :development do

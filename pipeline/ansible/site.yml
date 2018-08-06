@@ -3,6 +3,10 @@
 - hosts: rails
   remote_user: ubuntu
   become: yes
+  vars:
+    db_name: ansible_testing_production
+    db_user: ansible_testing
+    db_password: caio
   tasks:
     - name: Update all packages to the latest version
       apt:
@@ -93,3 +97,10 @@
       apt:
         name: nginx
         state: latest
+    - name: Install PostgreSQL
+      apt:
+        name: '{{ item }}'
+        with_items:
+          - postgresql
+          - postgresql-contrib
+          - libpq-dev
