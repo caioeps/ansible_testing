@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.11.0'
 
-set :application, :ansible_testing
+set :application, 'ansible_testing'
 set :repo_url, 'git@github.com:caioeps/ansible_testing.git'
 
 # Default branch is :master
@@ -36,6 +36,10 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets'
 # set :keep_releases, 5
 
 # Uncomment the following to require manually verifying the host key before first deploy.
-# set :ssh_options, verify_host_key: :secure
+set :ssh_options, {
+  keys: [
+    File.join(File.expand_path('~'), '.ssh', 'id_rsa.pub')
+  ]
+}
 
 set :chruby_ruby, 'ruby-2.5.0'
