@@ -1,0 +1,2 @@
+; ansible_testing/ansible/production
+rails ansible_host=ec2-54-174-135-66.compute-1.amazonaws.com
