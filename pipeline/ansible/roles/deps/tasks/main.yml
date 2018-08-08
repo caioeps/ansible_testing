@@ -1,0 +1,20 @@
+- name: Install Ruby dependencies
+  # TODO: User a loop later on.
+  apt:
+    name: "{{ item }}"
+  with_items:
+     - gcc
+     - autoconf
+     - bison
+     - build-essential
+     - libssl-dev
+     - libyaml-dev
+     - libreadline6-dev
+     - zlib1g-dev
+     - libncurses5-dev
+     - libffi-dev
+     - libgdbm3
+     - libgdbm-dev
+     - sqlite3
+     - libsqlite3-dev
+     - nodejs
