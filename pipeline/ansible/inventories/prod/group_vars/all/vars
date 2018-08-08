@@ -6,3 +6,4 @@
 # - secret_key_base
 
 deploy_user: deploy
+app_env: production
