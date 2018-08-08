@@ -10,6 +10,5 @@ test:
   database: ansible_testing_test
 production:
   <<: *default
+  url: <%= ENV['ANSIBLE_TESTING_DATABASE_URL'] %>
   database: <%= ENV['ANSIBLE_TESTING_DATABASE_NAME'] %>
-  username: <%= ENV['ANSIBLE_TESTING_DATABASE_USERNAME'] %>
-  password: <%= ENV['ANSIBLE_TESTING_DATABASE_PASSWORD'] %>

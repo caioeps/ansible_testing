@@ -1,5 +1,6 @@
 # Varibles set in vault:
 # - database_name
+# - database_url
 # - database_username
 # - database_password
 # - secret_key_base

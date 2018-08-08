@@ -1,4 +1,7 @@
-- name: Install nginx
+- name: Install PostgreSQL
   apt:
-    name: nginx
-    state: latest
+    name: '{{ item }}'
+  with_items:
+    - libpq-dev
+    - postgresql
+    - postgresql-contrib
