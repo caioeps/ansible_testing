@@ -1,5 +1,5 @@
 ---
-- hosts: rails
+- hosts: ansible_testing
   remote_user: ubuntu
   become: yes
   roles:

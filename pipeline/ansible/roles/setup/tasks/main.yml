@@ -3,10 +3,18 @@
     upgrade: dist
 - name: Add deploy user
   user:
-    name: deploy
+    name: "{{ deploy_user }}"
     shell: /bin/bash
 - name: Add SSH key to server for deploy
-  # TODO: User a loop later on.
+  # TODO: Use a loop later on.
   authorized_key:
     user: deploy
     key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZN5iRBIeW4pVvZI4TVwKW7UeeLhd/cyxXKXCtm6NSqiJhOwmbLnVdvnMAwmBU5GZarQk0GAsRY3Y7SNZvG6inBKy5QaoP56Tb3hXYYElizyS0Ox4RTPE5p8ARXa+4vtF+i1crwBLYPJkle1xOZWdQCKkWC9XjPpCHtZlXP8Fsm06A2FhAjw1O20SEJOHnrRSJi+AnrZiTJlZC33BDC0SvVSn3pJdjvFRO6okRgRyIpk6lqcnX3W/czU2rthjPn7J68H74pCh0C6U6jDoZAJg0i8r+uFI+8a3k5fLWmpUyZwwyD/3pzmXb0o3k5Ahgmt/PYAtxmKsAXhs2IzVIbN++KHIMnnvFzJQBkhnQY0x0PishpfkK6X4wQgVFhLeY5seNm2iYPecQCNrg4V2GqSWN1f2sDDDZ+ELnp2EdfEDVvgxWIbGzJaIYBUoblM03ahIMSLyLwPHQfnU4fg8mp6fGAB+7yIgeWIaCq7HyWF6mLFD2ohZAq+2qCJvideJBcjxUU2grofwjfbxEI8ZXKoJKAh6vq9JweVaNe44JTyIgLxE/XV5ZDMO6m7MI7I+TbSivzK8l9FdfnaMjrsHNkPSTp2QMvi/abVxOuUjZYL2+6tb7Jl8Qgh4oMQKRqZBh5wMdz2UcUHIMzFyvTZSSjDCXE/0ZViisbzWjLxjKJ5luWQ== caioergos@gmail.com"
+- name: Create application shared directory to hold .env file
+  file:
+    path: "/home/{{ deploy_user }}/apps/ansible_testing/shared"
+    state: directory
+- name: Add .env file
+  template:
+    src: templates/.env.j2
+    dest: "/home/{{ deploy_user }}/apps/ansible_testing/shared/.env"
